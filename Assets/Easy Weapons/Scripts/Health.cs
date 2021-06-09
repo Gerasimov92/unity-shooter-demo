@@ -8,14 +8,16 @@
 
 using UnityEngine;
 using System.Collections;
+using Photon.Pun;
+using UnityEngine.SceneManagement;
 
-public class Health : MonoBehaviour
+public class Health : MonoBehaviour, IPunObservable
 {
 	public bool canDie = true;					// Whether or not this health can die
 	
 	public float startingHealth = 100.0f;		// The amount of health to start with
 	public float maxHealth = 100.0f;			// The maximum amount of health
-	private float currentHealth;				// The current ammount of health
+	public float currentHealth;				// The current ammount of health
 
 	public bool replaceWhenDead = false;		// Whether or not a dead replacement should be instantiated.  (Useful for breaking/shattering/exploding effects)
 	public GameObject deadReplacement;			// The prefab to instantiate when this GameObject dies
@@ -38,6 +40,8 @@ public class Health : MonoBehaviour
 	{
 		// Change the health by the amount specified in the amount variable
 		currentHealth += amount;
+		if (currentHealth < 0)
+			currentHealth = 0;
 
 		// If the health runs out, then Die.
 		if (currentHealth <= 0 && !dead && canDie)
@@ -64,5 +68,19 @@ public class Health : MonoBehaviour
 
 		// Remove this GameObject from the scene
 		Destroy(gameObject);
+	}
+
+	public void OnPhotonSerializeView(PhotonStream stream, PhotonMessageInfo info)
+	{
+		if (stream.IsReading)
+			currentHealth = (float)stream.ReceiveNext();
+		else
+			stream.SendNext(currentHealth);
+	}
+
+	[PunRPC]
+	void ChangeHealthRPC(float amount)
+	{
+		ChangeHealth(amount);
 	}
 }

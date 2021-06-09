@@ -7,8 +7,9 @@
 
 using UnityEngine;
 using System.Collections;
+using Photon.Pun;
 
-public class WeaponSystem : MonoBehaviour
+public class WeaponSystem : MonoBehaviourPun, IPunObservable
 {
 	public GameObject[] weapons;				// The array that holds all the weapons that the player has
 	public int startingWeaponIndex = 0;			// The weapon index that the player will start with
@@ -26,6 +27,8 @@ public class WeaponSystem : MonoBehaviour
 	// Update is called once per frame
 	void Update()
 	{
+		if (!photonView.IsMine) return;
+
 		// Allow the user to instantly switch to any weapon
 		if (Input.GetButtonDown("Weapon 1"))
 			SetActiveWeapon(0);
@@ -101,5 +104,13 @@ public class WeaponSystem : MonoBehaviour
 		if (weaponIndex < 0)
 			weaponIndex = weapons.Length - 1;
 		SetActiveWeapon(weaponIndex);
+	}
+
+	public void OnPhotonSerializeView(PhotonStream stream, PhotonMessageInfo info)
+	{
+		if (stream.IsReading)
+			SetActiveWeapon((int)stream.ReceiveNext());
+		else
+			stream.SendNext(weaponIndex);
 	}
 }

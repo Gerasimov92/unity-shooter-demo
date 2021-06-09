@@ -8,6 +8,7 @@
 using UnityEngine;
 using System.Collections;
 using System.Collections.Generic;
+using Photon.Pun;
 
 public class Explosion : MonoBehaviour
 {
@@ -39,7 +40,14 @@ public class Explosion : MonoBehaviour
 				float damageAmount = damage * (1 / Vector3.Distance(transform.position, col.transform.position));
 
 				// The Easy Weapons health system
-				col.GetComponent<Collider>().gameObject.SendMessageUpwards("ChangeHealth", -damageAmount, SendMessageOptions.DontRequireReceiver);
+				if (col.GetComponent<Collider>().gameObject.TryGetComponent<PhotonView>(out PhotonView view))
+				{
+					view.RPC("ChangeHealthRPC", RpcTarget.All, -damageAmount);
+				}
+				else
+				{
+					col.GetComponent<Collider>().gameObject.SendMessageUpwards("ChangeHealth", -damageAmount, SendMessageOptions.DontRequireReceiver);
+				}
 
 				// The Shooter AI health system
 				if (shooterAISupport)

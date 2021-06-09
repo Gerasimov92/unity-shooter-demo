@@ -8,6 +8,7 @@
 
 using UnityEngine;
 using System.Collections;
+using Photon.Pun;
 
 public enum ProjectileType
 {
@@ -128,7 +129,14 @@ public class Projectile : MonoBehaviour
 		// Apply damage to the hit object if damageType is set to Direct
 		if (damageType == DamageType.Direct)
 		{
-			col.collider.gameObject.SendMessageUpwards("ChangeHealth", -damage, SendMessageOptions.DontRequireReceiver);
+			if (col.collider.gameObject.TryGetComponent<PhotonView>(out PhotonView view))
+			{
+				view.RPC("ChangeHealthRPC", RpcTarget.All, -damage);
+			}
+			else
+			{
+				col.collider.gameObject.SendMessageUpwards("ChangeHealth", -damage, SendMessageOptions.DontRequireReceiver);
+			}
 
 			//call the ApplyDamage() function on the enenmy CharacterSetup script
 			if (col.collider.gameObject.layer == LayerMask.NameToLayer("Limb"))

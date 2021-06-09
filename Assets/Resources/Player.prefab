@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 3337412}
   - component: {fileID: 2337412}
   - component: {fileID: 9537412}
-  m_Layer: 0
+  m_Layer: 30
   m_Name: Rocket_Launcher
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -110,7 +110,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 480408}
-  m_Layer: 0
+  m_Layer: 30
   m_Name: Gun_FX_Spot
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -140,7 +140,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 480410}
-  m_Layer: 0
+  m_Layer: 30
   m_Name: ShootSpot
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -170,7 +170,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 480414}
-  m_Layer: 0
+  m_Layer: 30
   m_Name: Shell_Spit_Spot
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -202,7 +202,7 @@ GameObject:
   - component: {fileID: 480416}
   - component: {fileID: 11480416}
   - component: {fileID: 8280416}
-  m_Layer: 0
+  m_Layer: 30
   m_Name: Rocket Launcher
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -427,7 +427,7 @@ GameObject:
   - component: {fileID: 2095460}
   - component: {fileID: 12495460}
   - component: {fileID: 8195460}
-  m_Layer: 9
+  m_Layer: 30
   m_Name: Camera
   m_TagString: MainCamera
   m_Icon: {fileID: 0}
@@ -518,7 +518,7 @@ GameObject:
   - component: {fileID: 495470}
   - component: {fileID: 11495464}
   - component: {fileID: 8295462}
-  m_Layer: 0
+  m_Layer: 30
   m_Name: M79 Grenade Launcher
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -741,7 +741,8 @@ GameObject:
   m_Component:
   - component: {fileID: 495474}
   - component: {fileID: 11495468}
-  m_Layer: 0
+  - component: {fileID: 7920829514088800333}
+  m_Layer: 30
   m_Name: Pivot
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -782,6 +783,22 @@ MonoBehaviour:
   autoZeroVerticalOnMobile: 1
   autoZeroHorizontalOnMobile: 0
   relative: 1
+--- !u!114 &7920829514088800333
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 195474}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 627855c7f81362d41938ffe0b1475957, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_SynchronizePosition: 0
+  m_SynchronizeRotation: 1
+  m_SynchronizeScale: 0
+  m_UseLocal: 1
 --- !u!1 &195478
 GameObject:
   m_ObjectHideFlags: 0
@@ -791,7 +808,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 495478}
-  m_Layer: 0
+  m_Layer: 30
   m_Name: Gun_FX_Spot
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -821,7 +838,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 495480}
-  m_Layer: 0
+  m_Layer: 30
   m_Name: Shell_Spit_Spot
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -851,7 +868,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 495494}
-  m_Layer: 0
+  m_Layer: 30
   m_Name: ShootSpot
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -882,7 +899,7 @@ GameObject:
   m_Component:
   - component: {fileID: 495500}
   - component: {fileID: 11495470}
-  m_Layer: 9
+  m_Layer: 30
   m_Name: Head
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -933,7 +950,7 @@ GameObject:
   m_Component:
   - component: {fileID: 495506}
   - component: {fileID: 11495472}
-  m_Layer: 0
+  m_Layer: 30
   m_Name: Weapons
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -986,7 +1003,7 @@ GameObject:
   - component: {fileID: 3395468}
   - component: {fileID: 2395468}
   - component: {fileID: 9595464}
-  m_Layer: 0
+  m_Layer: 30
   m_Name: M79_grenade_launcher_model
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1092,7 +1109,11 @@ GameObject:
   - component: {fileID: 11495478}
   - component: {fileID: 11495476}
   - component: {fileID: 11495460}
-  m_Layer: 9
+  - component: {fileID: 4005713292506328670}
+  - component: {fileID: 1210489948443519533}
+  - component: {fileID: 6292795985641268129}
+  - component: {fileID: 8068628930210276254}
+  m_Layer: 0
   m_Name: Player
   m_TagString: Team2
   m_Icon: {fileID: 0}
@@ -1143,7 +1164,7 @@ MeshRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 195514}
-  m_Enabled: 0
+  m_Enabled: 1
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
@@ -1185,13 +1206,13 @@ Rigidbody:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 195514}
   serializedVersion: 2
-  m_Mass: 1
+  m_Mass: 70
   m_Drag: 0
   m_AngularDrag: 0.05
   m_UseGravity: 1
   m_IsKinematic: 0
   m_Interpolate: 0
-  m_Constraints: 80
+  m_Constraints: 112
   m_CollisionDetection: 0
 --- !u!114 &11495480
 MonoBehaviour:
@@ -1271,12 +1292,85 @@ MonoBehaviour:
   canDie: 0
   startingHealth: 300
   maxHealth: 100
+  currentHealth: 0
   replaceWhenDead: 0
   deadReplacement: {fileID: 0}
   makeExplosion: 0
   explosion: {fileID: 0}
   isPlayer: 1
   deathCam: {fileID: 0}
+--- !u!114 &4005713292506328670
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 195514}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9adcb730401e4df890e5b406a4031239, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  cameraObject: {fileID: 195466}
+--- !u!114 &1210489948443519533
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 195514}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: aa584fbee541324448dd18d8409c7a41, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ObservedComponentsFoldoutOpen: 1
+  Group: 0
+  prefixField: -1
+  Synchronization: 3
+  OwnershipTransfer: 0
+  observableSearch: 2
+  ObservedComponents:
+  - {fileID: 11495460}
+  - {fileID: 6292795985641268129}
+  - {fileID: 8068628930210276254}
+  - {fileID: 7920829514088800333}
+  - {fileID: 11495472}
+  sceneViewId: 0
+  InstantiationId: 0
+  isRuntimeInstantiated: 0
+--- !u!114 &6292795985641268129
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 195514}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 627855c7f81362d41938ffe0b1475957, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_SynchronizePosition: 1
+  m_SynchronizeRotation: 1
+  m_SynchronizeScale: 0
+  m_UseLocal: 0
+--- !u!114 &8068628930210276254
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 195514}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 64179f3720bbfe947b7724caa67b7c1d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_SynchronizeVelocity: 1
+  m_SynchronizeAngularVelocity: 0
+  m_TeleportEnabled: 0
+  m_TeleportIfDistanceGreaterThan: 3
 --- !u!1 &1703598187637589342
 GameObject:
   m_ObjectHideFlags: 0
@@ -1286,7 +1380,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5389696330272763380}
-  m_Layer: 0
+  m_Layer: 30
   m_Name: Gun_FX_Spot
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1316,7 +1410,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2812394330167457127}
-  m_Layer: 0
+  m_Layer: 30
   m_Name: Shell_Spit_Spot
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1348,7 +1442,7 @@ GameObject:
   - component: {fileID: 4895364229854793070}
   - component: {fileID: 3474831262454037520}
   - component: {fileID: 5850935852154296605}
-  m_Layer: 0
+  m_Layer: 30
   m_Name: AK47
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1628,7 +1722,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8862771432809672348}
-  m_Layer: 0
+  m_Layer: 30
   m_Name: ShootSpot
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1659,6 +1753,22 @@ PrefabInstance:
     - target: {fileID: 100000, guid: cd8d56469cf64654eaa21e15c6ae7c18, type: 3}
       propertyPath: m_Name
       value: Ak-47
+      objectReference: {fileID: 0}
+    - target: {fileID: 100000, guid: cd8d56469cf64654eaa21e15c6ae7c18, type: 3}
+      propertyPath: m_Layer
+      value: 30
+      objectReference: {fileID: 0}
+    - target: {fileID: 100002, guid: cd8d56469cf64654eaa21e15c6ae7c18, type: 3}
+      propertyPath: m_Layer
+      value: 30
+      objectReference: {fileID: 0}
+    - target: {fileID: 100004, guid: cd8d56469cf64654eaa21e15c6ae7c18, type: 3}
+      propertyPath: m_Layer
+      value: 30
+      objectReference: {fileID: 0}
+    - target: {fileID: 100006, guid: cd8d56469cf64654eaa21e15c6ae7c18, type: 3}
+      propertyPath: m_Layer
+      value: 30
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: cd8d56469cf64654eaa21e15c6ae7c18, type: 3}
       propertyPath: m_RootOrder

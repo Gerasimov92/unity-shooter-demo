@@ -17,6 +17,7 @@
 using UnityEngine;
 using System.Collections;
 using System.Collections.Generic;
+using Photon.Pun;
 
 public enum WeaponType
 {
@@ -66,7 +67,7 @@ public class SmartBulletHoleGroup
 
 
 // The Weapon class itself handles the weapon mechanics
-public class Weapon : MonoBehaviour
+public class Weapon : MonoBehaviourPun
 {
 	// Weapon Type
 	public WeaponType type = WeaponType.Projectile;		// Which weapon system should be used
@@ -320,7 +321,7 @@ public class Weapon : MonoBehaviour
 	// Checks for user input to use the weapons - only if this weapon is player-controlled
 	void CheckForUserInput()
 	{
-
+		if (!photonView.IsMine) return;
 		// Fire if this is a raycast type weapon and the user presses the fire button
 		if (type == WeaponType.Raycast)
 		{
@@ -525,6 +526,7 @@ public class Weapon : MonoBehaviour
 
 	void OnGUI()
 	{
+		if (!photonView.IsMine) return;
 
 		// Crosshairs
 		if (type == WeaponType.Projectile || type == WeaponType.Beam)
@@ -615,7 +617,14 @@ public class Weapon : MonoBehaviour
 				}
 				
 				// Damage
-				hit.collider.gameObject.SendMessageUpwards("ChangeHealth", -damage, SendMessageOptions.DontRequireReceiver);
+				if (hit.collider.gameObject.TryGetComponent<PhotonView>(out PhotonView view))
+				{
+					view.RPC("ChangeHealthRPC", RpcTarget.All, -damage);
+				}
+				else
+				{
+					hit.collider.gameObject.SendMessageUpwards("ChangeHealth", -damage, SendMessageOptions.DontRequireReceiver);
+				}
 				
 				if (shooterAIEnabled)
 				{
@@ -833,7 +842,8 @@ public class Weapon : MonoBehaviour
 			// Instantiate the projectile
 			if (projectile != null)
 			{
-				GameObject proj = Instantiate(projectile, projectileSpawnSpot.position, projectileSpawnSpot.rotation) as GameObject;
+				var proj = PhotonNetwork.Instantiate(projectile.name, projectileSpawnSpot.position, projectileSpawnSpot.rotation);
+				//GameObject proj = Instantiate(projectile, projectileSpawnSpot.position, projectileSpawnSpot.rotation) as GameObject;
 
 				// Warmup heat
 				if (warmup)
@@ -954,7 +964,14 @@ public class Weapon : MonoBehaviour
 				}
 
 				// Damage
-				hit.collider.gameObject.SendMessageUpwards("ChangeHealth", -beamPower, SendMessageOptions.DontRequireReceiver);
+				if (hit.collider.gameObject.TryGetComponent<PhotonView>(out PhotonView view))
+				{
+					view.RPC("ChangeHealthRPC", RpcTarget.All, -beamPower);
+				}
+				else
+				{
+					hit.collider.gameObject.SendMessageUpwards("ChangeHealth", -beamPower, SendMessageOptions.DontRequireReceiver);
+				}
 
 				// Shooter AI support
 				if (shooterAIEnabled)
